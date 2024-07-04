@@ -4,17 +4,20 @@ import InputFlutuante from "components/InputFlutuante";
 import MenuFlutuante from "components/MenuFlutuante";
 import MenuNavegacao from "components/Menu_Navegacao";
 import { CodigoProvider } from "contexts/CodigoContexto";
+import { ControleProvider } from "contexts/ControleContexto";
 import { Outlet } from "react-router-dom";
 
 const PaginaBase = () => {
     return (
         <ContainerDisplay>
             <CodigoProvider>
-                <InputFlutuante/>
-                <Cabecalho />
-                <MenuNavegacao />
-                <Outlet />
-                <MenuFlutuante />
+                <ControleProvider>
+                    <InputFlutuante />
+                    <Cabecalho />
+                    <MenuNavegacao />
+                    <Outlet />
+                    <MenuFlutuante />
+                </ControleProvider>
             </CodigoProvider>
         </ContainerDisplay>
     )

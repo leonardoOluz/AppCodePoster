@@ -3,11 +3,11 @@ import InputPesquisa from 'components/Input_Pesquisa';
 import Option from './Option';
 import Botao from 'components/Botao';
 import EditorCodigo from 'components/EditorCodigo';
-import jsonLinguagem from "json/linguagem.json";
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { CodigoContext } from 'contexts/CodigoContexto';
 import { useNavigate } from 'react-router-dom';
 import { usePost } from "hooks/usePost"
+import { ControleContext } from 'contexts/ControleContexto';
 
 const Formulario = () => {
     const navigate = useNavigate()
@@ -15,8 +15,16 @@ const Formulario = () => {
     const [hover, setHover] = useState(false)
     const [spanTitulo, setSpanTitulo] = useState(false);
     const [spanDescricao, setSpanDescricao] = useState(false);
+    const [apiLinguage, setApiLinguage] = useState([]);
     const { setState, saveNewPost, savePostEdited } = usePost();
-
+    useEffect(() => {
+        fetch('https://my-json-server.typicode.com/leonardoOluz/TEXT-EDITION-API/linguagen')
+            .then(resposta => resposta.json())
+            .then(dados => {
+                setApiLinguage(dados)
+            })
+    }, [])
+    const { setNoCodeSpan } = useContext(ControleContext);
     const { codigo,
         titulo,
         descricao,
@@ -26,8 +34,7 @@ const Formulario = () => {
         setDescricao,
         setLinguagem,
         setCor,
-        id_post,
-        setNoCodeSpan
+        id_post
     } = useContext(CodigoContext);
 
     function configTimeOut() {
@@ -59,7 +66,7 @@ const Formulario = () => {
     return (
         <form onSubmit={salvar} className={styles}>
 
-            <EditorCodigo changed={onChangeEdition} valor={codigo} />
+            <EditorCodigo changed={onChangeEdition} valor={codigo} cor={cor} />
             <div className={styles.container_formulario}>
                 <label className={styles.label_form}>Seu Projeto</label>
                 <InputPesquisa
@@ -88,7 +95,7 @@ const Formulario = () => {
                         className={`input_padrao ${styles.seletor}`}
                         style={{ width: '100%' }}
                     >
-                        {jsonLinguagem.map(item => <Option key={item.id} children={item.texto} valores={item.linguagem} />)}
+                        {apiLinguage.map(item => <Option key={item.id} children={item.texto} valores={item.linguagem} />)}
                     </select>
                     <InputPesquisa
                         check

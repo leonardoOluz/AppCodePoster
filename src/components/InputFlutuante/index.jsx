@@ -1,12 +1,12 @@
 import InputPesquisa from "components/Input_Pesquisa";
-import { CodigoContext } from "contexts/CodigoContexto";
 import { useContext } from "react";
 import { IoClose } from "react-icons/io5";
 import styles from "./InputFlutuante.module.css";
 import { usePost } from "hooks/usePost";
+import { ControleContext } from "contexts/ControleContexto";
 
 const InputFlutuante = () => {
-    const { clickPesquisa, setClickPesquisa } = useContext(CodigoContext);
+    const { clickPesquisa, setClickPesquisa } = useContext(ControleContext);
     const {searchPost} = usePost();
     return (<>
         {clickPesquisa

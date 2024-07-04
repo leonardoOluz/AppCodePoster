@@ -1,10 +1,10 @@
 import { useContext } from "react";
 import styles from "./EditorCodigo.module.css";
 import TextEditor from "./TextEditor";
-import { CodigoContext } from "contexts/CodigoContexto";
+import { ControleContext } from "contexts/ControleContexto";
 
-const EditorCodigo = ({ changed, valor }) => {
-    const { setShow, show, cor, noCodeSpan } = useContext(CodigoContext)
+const EditorCodigo = ({ changed, valor, cor }) => {
+    const { setShow, show, noCodeSpan } = useContext(ControleContext);
 
     const highlight = (e) => {
         e.preventDefault()
@@ -14,7 +14,7 @@ const EditorCodigo = ({ changed, valor }) => {
     return (
         <div className={styles.container_principal}>
             <div className={styles.border} style={{ backgroundColor: cor }}>
-                <TextEditor changed={changed} valor={valor} />
+                <TextEditor changed={changed} valor={valor} show={show}/>
                 <div className={styles.container}>
                     <div className={styles.circulos} />
                     <div className={styles.circulos} style={{ backgroundColor: '#FFBD2E' }} />

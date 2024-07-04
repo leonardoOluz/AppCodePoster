@@ -1,12 +1,12 @@
 import Imagem from "components/Cabecalho/Imagem";
 import CampoLista from "components/Campo_Lista";
-import { CodigoContext } from "contexts/CodigoContexto";
 import { useContext } from "react";
 import fotoPerfil from '@/../assets/LeoLuz.jpg'
 import styles from "./MenuFlutuante.module.css"
+import { ControleContext } from "contexts/ControleContexto";
 
 const MenuFlutuante = () => {
-    const { click } = useContext(CodigoContext);
+    const { click } = useContext(ControleContext);
 
     return (<>
         {click ? <span className={styles.menu_span}>

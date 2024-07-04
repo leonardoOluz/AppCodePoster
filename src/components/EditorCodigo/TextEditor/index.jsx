@@ -3,8 +3,8 @@ import styles from "./TextEditor.module.css";
 import { useContext } from "react";
 import { CodigoContext } from "contexts/CodigoContexto";
 
-const TextEditor = ({ changed, valor }) => {
-    const { linguagem, show, } = useContext(CodigoContext)
+const TextEditor = ({ changed, valor, show }) => {
+    const { linguagem } = useContext(CodigoContext)
     return (
         <Editor  
             className={styles.editor}

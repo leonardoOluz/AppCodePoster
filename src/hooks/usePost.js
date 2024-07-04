@@ -1,4 +1,5 @@
 import { CodigoContext } from "contexts/CodigoContexto";
+import { ControleContext } from "contexts/ControleContexto";
 import { useContext } from "react";
 import uuid from "react-native-uuid";
 import { useNavigate } from "react-router-dom";
@@ -20,9 +21,8 @@ export const usePost = () => {
         setCor,
         setId_post,
         setPost,
-        setNoCodeSpan
     } = useContext(CodigoContext);
-
+    const { setNoCodeSpan } = useContext(ControleContext)
     const navigate = useNavigate();
 
     const setState = () => {
@@ -62,7 +62,7 @@ export const usePost = () => {
     }
 
     const savePostEdited = (id_post) => {
-        setPoster( poster.map(prev => {
+        setPoster(poster.map(prev => {
             if (prev.id === id_post) {
                 prev.titulo = titulo
                 prev.descricao = descricao
@@ -71,11 +71,11 @@ export const usePost = () => {
                 prev.cor = cor
                 return prev
             }
-           return prev
+            return prev
         }))
     }
 
-    const  searchPost = (e) => {
+    const searchPost = (e) => {
         setPost(poster.filter((item) => item.descricao.toLowerCase().includes(e.target.value.toLowerCase())))
         navigate("/")
     }

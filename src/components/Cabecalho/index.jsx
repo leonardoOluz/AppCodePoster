@@ -9,15 +9,14 @@ import { LuMenu } from "react-icons/lu";
 import { FaSearch } from "react-icons/fa";
 import { usePost } from 'hooks/usePost';
 import { Link } from 'react-router-dom';
+import { ControleContext } from 'contexts/ControleContexto';
 
 const Cabecalho = () => {
-    const {
-        click,
+    const { usuarios } = useContext(CodigoContext);
+    const { click,
         setClick,
         clickPesquisa,
-        setClickPesquisa,
-        usuarios,
-    } = useContext(CodigoContext);
+        setClickPesquisa } = useContext(ControleContext);
     const { searchPost } = usePost();
 
     const foto = require(`assets/${usuarios[1].foto}.jpg`)

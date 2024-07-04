@@ -10,11 +10,6 @@ export const CodigoProvider = ({ children }) => {
     const [poster, setPoster] = useState(code.postagem);
     const [usuarios, setUsuarios] = useState(user.editorCode);
     const [post, setPost] = useState([])
-    /* Variaveis de controle */
-    const [show, setShow] = useState(false);
-    const [click, setClick] = useState(false);
-    const [clickPesquisa, setClickPesquisa] = useState(false);
-    const [noCodeSpan, setNoCodeSpan] = useState(false);
     /* Variaveis de controle do formulario*/
     const [codigo, setCodigo] = useState("");
     const [linguagem, setLinguagem] = useState("");
@@ -32,25 +27,8 @@ export const CodigoProvider = ({ children }) => {
         setPost([...poster])
     }, [poster])
 
-    useEffect(() => {
-
-        const windowSizeHandler = () => {
-            setWindowSize([window.innerWidth, window.innerHeight])
-        }
-        window.addEventListener("resize", windowSizeHandler)
-
-        setClickPesquisa((prev) => windowSize[0] > 767 ? prev = false : prev)
-
-        return () => {
-            window.removeEventListener("resize", windowSizeHandler)
-        }
-
-    }, [windowSize, setWindowSize, setClickPesquisa, clickPesquisa])
-
     return (
         <CodigoContext.Provider value={{
-            noCodeSpan,
-            setNoCodeSpan,
             poster,
             setPoster,
             usuarios,
@@ -59,14 +37,8 @@ export const CodigoProvider = ({ children }) => {
             setCodigo,
             linguagem,
             setLinguagem,
-            show,
-            setShow,
             cor,
             setCor,
-            click,
-            setClick,
-            clickPesquisa,
-            setClickPesquisa,
             windowSize,
             setWindowSize,
             titulo,
