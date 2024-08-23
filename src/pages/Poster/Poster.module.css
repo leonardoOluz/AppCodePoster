@@ -1,0 +1,49 @@
+.messagePost {
+  width: 100%;
+  color: var(--branco);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.messagePost .formularioMessagem,
+.messagePost .containerMessage {
+  margin: 5px 0;
+  border: 1px solid var(--branco);
+  width: 85%;
+  border-radius: 16px;
+  padding: .5em;
+}
+
+.loadingMsg {
+  font-size: 28px;
+  color: var(--branco);
+}
+
+.messagePost .formularioMessagem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.messagePost .formularioMessagem textarea {
+  width: 100%;
+  height: auto;
+  padding: 15px 5px;
+  margin-bottom: 1em;
+  font-size: 16px;
+  border: none;
+  border-radius: 16px;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.messagePost .formularioMessagem button {
+  padding: 5px 60px;
+}
+
+@media (min-width: 1024px) {
+  .messagePost .formularioMessagem,
+  .messagePost .containerMessage {
+    max-width: 520px;
+  }
+}

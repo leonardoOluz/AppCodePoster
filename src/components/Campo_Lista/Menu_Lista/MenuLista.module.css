@@ -9,6 +9,10 @@
 }
 
 .menu_lista a img {
+    background-color: var(--Blue-dark);
+    color: white;
+    width: 45px;
+    height: 45px;
     border-radius: 16px;
     transition: 500ms;
 }

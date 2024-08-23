@@ -1,4 +1,5 @@
 .postagem {
+    width: 90%;
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -6,6 +7,7 @@
     background-color: var(--Blue-dark);
     margin: 0 .4em 1em .4em;
     border-radius: 0 0 6px 6px;
+    height: auto;
 }
 
 .postagem .border {
@@ -65,9 +67,9 @@
 
 .descricao {
     padding: .5em 0;
-    width: 85%;
+    width: 100%;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     gap: 1em;
 }
 
@@ -94,20 +96,22 @@
     cursor: pointer;
 }
 
-/* Hidden para descricao */
-.descricao {
-    display: none;
-}
-
 /* Hover de descrição */
 .postagem:hover .descricao {
     display: flex;
 }
 
+.posterMessage {
+    display: none;
+}
+
 /* Designer para o coração */
-.heart {
+.enjoyMessage {
     cursor: pointer;
-    align-self: center;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    color: var(--branco);
 }
 
 .perfil_post {
@@ -117,9 +121,43 @@
     gap: 0;
 }
 
+.containerTitulo {
+    width: 100%;
+    padding-left: 1em;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+}
+
+.containerEditarExcluir {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+}
+
+.btnEditar,
+.btnExcluir {
+    padding: 0 30px;
+    border-radius: 16px;
+    font-size: 1em;
+    background-color: var(--Blue-300);
+    color: var(--Blue-dark);
+    cursor: pointer;
+    transition: transform 200ms;
+}
+
+.btnExcluir {
+    color: #FF5F56;
+    border-color: #FF5F56;
+}
+
+.btnEditar:hover,
+.btnExcluir:hover {
+    transform: scale(1.1);
+}
+
 @media (min-width: 768px) {
     .postagem {
-        width: 100%;
         max-width: 704px;
     }
 

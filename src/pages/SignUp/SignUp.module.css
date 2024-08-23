@@ -1,0 +1,99 @@
+.cadastro_form {
+    overflow-y: scroll;
+    scrollbar-width: auto;
+    width: 70%;
+    height: 100%;
+    padding: 4em 1em 0 1em;
+    max-width: 550px;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    align-items: center;
+    background-color: rgba(0, 0, 0, .4);
+}
+
+.cadastro_form button {
+    margin: 1em;
+    padding: .5em;
+    width: 50%;
+    max-width: 350px;
+    border-radius: 9px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: transform .5s;
+}
+
+.cadastro_form button:hover {
+    background-color: var(--azul-span);
+    color: var(--branco);
+    transform: scale(1.1);
+}
+
+.cadastro_form button:active {
+    border: 1px solid var(--purple);
+}
+
+.cadastro_form h3 {
+    font-size: 20px;
+    color: var(--branco);
+}
+
+.cadastro_form span {
+    /* position: absolute; */
+    padding: 0;
+    color: #f8a59f;
+    font-size: 14px;
+    animation: pulsar 1s;
+}
+
+@keyframes pulsar {
+    from {
+        transform: scale(0.8);
+    }
+
+    to {
+        transform: scale(1.5);
+    }
+}
+
+.cadastro_form .div_file {
+    width: 100%;
+    text-align: center;
+    
+}
+
+.cadastro_form .div_file input[type="file"] {
+    display: none;
+}
+
+.cadastro_form .div_file label {
+    padding: .5em;
+    width: 50%;
+    max-width: 350px;
+    font-size: 16px;
+    cursor: pointer;
+    color: var(--dark-gray);
+    background-color: rgba(255, 255, 255, .9);
+    transition: .5s;
+}
+
+.cadastro_form .div_file label:hover {
+    color: var(--branco);
+    background-color: var(--purple);
+}
+
+.successfully, .error {
+    background-color: aqua;
+    padding: .5em;
+    border-radius: 8px;
+    color: var(--purple);
+    font-size: 22px;
+    margin-top: 1em;
+}
+
+.error {
+    background-color: #f8a59f;
+    color: var(--branco);
+    font-size: 16px;
+}

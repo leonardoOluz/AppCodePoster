@@ -1,6 +1,12 @@
+.container_display{
+    width: 100%;
+}
+
 @media (min-width: 1024px) {
 
     .container_display {
+        width: 100%;
+        max-width: 1440px;
         display: grid;
         grid-template-areas:
             'cabecalho cabecalho cabecalho'

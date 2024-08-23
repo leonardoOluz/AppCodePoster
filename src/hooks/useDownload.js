@@ -1,10 +1,10 @@
 import { toPng, toSvg, toJpeg } from 'html-to-image';
-const { useRef, useCallback } = require("react")
- 
+import { useRef, useCallback } from 'react';
+
 export const useDownload = () => {
     const ref = useRef(null)
-    
-    const clickPng =  useCallback(() => {
+
+    const clickPng = useCallback(() => {
 
         if (ref.current === null) {
             return
@@ -22,7 +22,7 @@ export const useDownload = () => {
             })
     }, [ref])
 
-    const clickJpeg =  useCallback(() => {
+    const clickJpeg = useCallback(() => {
 
         if (ref.current === null) {
             return
@@ -40,7 +40,7 @@ export const useDownload = () => {
             })
     }, [ref])
 
-    const clickJSvg =  useCallback(() => {
+    const clickJSvg = useCallback(() => {
 
         if (ref.current === null) {
             return
@@ -57,11 +57,11 @@ export const useDownload = () => {
                 console.log(error)
             })
     }, [ref])
-    
-    return{
+
+    return {
         clickPng,
         clickJpeg,
         clickJSvg,
-        ref
+        ref,
     }
 }

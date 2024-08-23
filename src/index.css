@@ -32,7 +32,7 @@ body {
 /* ediçao de  barra lateral usando cor de fundo e width 10px */
 ::-webkit-scrollbar {
     background-color: var(--Blue-dark);
-    width: 10px;
+    width: 8px;
 }
 
 /* Edição do thumb com bordas arredondada e cor span */
@@ -85,9 +85,10 @@ body {
     padding: .5em;
     height: 35px;
     align-items: center;
-    gap: .5em;
+    gap: 1em;
     border-radius: 8px;
     transition: 550ms;
+    color: var(--branco);
 }
 
 /* Hover do perfil */
@@ -120,4 +121,24 @@ body {
 /* iframe redirecionamento do editor */
 iframe#webpack-dev-server-client-overlay {
     display: none !important
+}
+
+/* Btn deslogar */
+.button_deslogar {
+    width: 80%;
+    border-radius: 16px;
+    padding: .5em;
+    background-color: var(--Blue-300);
+    outline: none;
+    cursor: pointer;
+    border: none;
+    transition: transform 100ms;
+}
+
+.button_deslogar:hover {
+    transform: scale(1.1);
+}
+
+.button_deslogar:active {
+    transform: scale(0.9);
 }

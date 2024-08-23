@@ -1,8 +1,8 @@
 import { CodigoContext } from "contexts/CodigoContexto";
 import { ControleContext } from "contexts/ControleContexto";
 import { useContext } from "react";
-import uuid from "react-native-uuid";
 import { useNavigate } from "react-router-dom";
+import { useConnectApi } from "./useConnectApi";
 
 
 export const usePost = () => {
@@ -11,19 +11,27 @@ export const usePost = () => {
         cor,
         titulo,
         descricao,
-        usuarios,
-        poster,
-        setPoster,
         setCodigo,
         setTitulo,
         setDescricao,
         setLinguagem,
         setCor,
         setId_post,
-        setPost,
+        userLogged,
+        setPosters
     } = useContext(CodigoContext);
     const { setNoCodeSpan } = useContext(ControleContext)
+    const { getApi } = useConnectApi();
     const navigate = useNavigate();
+
+    /* Funções para postagem */
+    let data = {
+        titulo,
+        descricao,
+        linguagem,
+        codigo,
+        cor
+    }
 
     const setState = () => {
         setCodigo("")
@@ -36,61 +44,29 @@ export const usePost = () => {
     }
 
     const saveNewPost = () => {
-        const post = {
-            id: uuid.v4(),
-            id_usuario: usuarios[1].id,
-            titulo,
-            descricao,
-            linguagem,
-            codigo,
-            cor,
-            curtidas: {
-                id_usuario: []
-            },
-            mensagem: []
-        }
-        setPoster([...poster, post])
+        data.id_usuario = userLogged.data._id;
+        return data;
     }
 
-    const editionPost = (id_post) => {
-        let thereIsEdition = poster.find((item) => item.id === id_post)
-        setCodigo(thereIsEdition.codigo)
-        setTitulo(thereIsEdition.titulo)
-        setDescricao(thereIsEdition.descricao)
-        setLinguagem(thereIsEdition.linguagem)
-        setCor(thereIsEdition.cor)
+    const editionPost = async (id_post) => {
+        let { data } = await getApi(`postagem/${id_post}`)
+        setCodigo(data.codigo)
+        setTitulo(data.titulo)
+        setDescricao(data.descricao)
+        setLinguagem(data.linguagem)
+        setCor(data.cor)
     }
 
-    const savePostEdited = (id_post) => {
-        setPoster(poster.map(prev => {
-            if (prev.id === id_post) {
-                prev.titulo = titulo
-                prev.descricao = descricao
-                prev.linguagem = linguagem
-                prev.codigo = codigo
-                prev.cor = cor
-                return prev
-            }
-            return prev
-        }))
-    }
-
-    const searchPost = (e) => {
-        setPost(poster.filter((item) => item.descricao.toLowerCase().includes(e.target.value.toLowerCase())))
+    const searchTitulo = async (e) => {
+        setPosters(await getApi(`postagens/result/pesquisa?titulo=${e.target.value}`));
         navigate("/")
     }
 
-    const getPoster = () => {
-        setPost([...poster])
-    }
 
     return {
         setState,
         saveNewPost,
         editionPost,
-        savePostEdited,
-        searchPost,
-        getPoster
+        searchTitulo
     }
-
 }
